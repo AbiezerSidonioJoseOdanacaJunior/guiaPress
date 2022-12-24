@@ -6,20 +6,22 @@
         <h3>Todas as Categorias</h3>
         <table class="table table-bordered">
             <thead>
-                <tr>
-                    <th>ID</th>
+                <tr>    
+                    <th></th>
                     <th>Título</th>
                     <th>Sug</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>id</td>
-                    <td>Dev</td>
-                    <td>dev</td>
-                    <td>deletar</td>
-                </tr>
+                <% categories.forEach(category => { %>     
+                    <tr>
+                        <td><%= category.id %></td>
+                        <td><%= category.title %></td>
+                        <td><%= category.slug %></td>
+                        <td></td>
+                    </tr>
+                    <% })%>
             </tbody>
         </table>
     </div>
