@@ -22,8 +22,8 @@ router.post("/categories/save", (req, res) => {
   }
 });
 
-router.get("/categorias", (req, res) => {
-  res.send("Ola sou rota de categorias");
+router.get("/admin/categories", (req, res) => {
+  res.render("admin/categories/index");
 });
 
 module.exports = router;
