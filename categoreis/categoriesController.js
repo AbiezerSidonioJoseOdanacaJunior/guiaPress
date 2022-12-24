@@ -22,6 +22,27 @@ router.post("/categories/save", (req, res) => {
   }
 });
 
+router.post("/categories/delete", (req, res) => {
+  var id = req.body.id;
+  if (id != undefined) {
+    if (!isNaN(id)) {
+      Category.destroy({
+        where: {
+          id: id,
+        },
+      }).then(() => {
+        res.redirect("/admin/categories");
+      });
+    } else {
+      //Qudnfo não for um número
+      res.redirect("/admin/categories");
+    }
+  } else {
+    //Qudno for NULL
+    res.redirect("/admin/categories");
+  }
+});
+
 router.get("/admin/categories", (req, res) => {
   Category.findAll().then((categories) => {
     res.render("admin/categories/index", { categories: categories });
