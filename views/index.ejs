@@ -1,5 +1,5 @@
 <%- include ('./partials/header.ejs') %>
-<%- include ('./partials/navbar.ejs') %>
+<%- include ('./partials/homenavbar.ejs') %>
 <body class="p-0 m-0 border-0 bd-example">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -13,6 +13,19 @@
             <img src="/img/banner3.png" class="d-block w-100" alt="imagem-banner3">
           </div>
         </div>
+    </div>
+    <div class="container">
+      <hr>
+      <% articles.forEach(article => { %>
+        <div class="card">
+          <div class="card-header">
+            <h2><%= article.title %></h2>
+          </div>
+          <div class="card-body">
+            <a href="#" class="btn btn-primary"> Ler Artigo</a>
+          </div>
+        </div>
+        <% }) %>
     </div>
 </body>
 
