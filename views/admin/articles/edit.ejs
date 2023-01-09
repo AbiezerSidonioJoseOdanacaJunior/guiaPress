@@ -1,0 +1,60 @@
+<%- include ('../../partials/header.ejs') %>
+
+<%- include ('../../partials/navbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <a href="/admin/articles" class="btn btn-primary mb-3">Voltar</a>
+        <div class="card">
+            <div class="card-header">
+                <h3>Editar Artigo</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/articles/save">
+                    <input class="form-control mb-3" type="text" name="title" placeholder="Digite o título...">
+                    <textarea name="body" cols="30" rows="5" class="form-control" id="article" ><%- article.body %></textarea>
+                    <br>
+                    <label for="">Categorias:</label>
+                    <select name="category" class="form-control">
+                        <% categories.forEach((category) => { %>
+
+                            <% if(category.id == article.categoryId) { %> 
+                                <option value="<%= category.id %>" selected><%= category.title %></option>
+                            <% } else { %> 
+                                <option value="<%= category.id %>"><%= category.title %></option>
+                            <% } %>
+
+                       <% }) %>
+                    </select>
+                    <button class="btn btn-primary mt-3"> Atualizar</button>
+                </form>
+            </div>
+        </div>  
+    </div>
+</body>
+
+<%- include ('../../partials/footer.ejs')  %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        language: "pt_BR",
+
+        selector: "#article",
+
+        plugins: [
+
+        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+        'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'  ],
+        
+        toolbar: 'undo redo | casechange blocks | bold italic backcolor | ' +
+         'alignleft aligncenter alignright alignjustify | ' +
+         'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
+
+         init_instance_callback: () => {
+            tinymce.get("article").setContent($("#content").html())
+         }
+
+    })
+</script>
