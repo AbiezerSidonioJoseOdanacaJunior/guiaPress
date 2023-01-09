@@ -1,1 +1,23 @@
-<h1>Cria sua Conta</h1>
+<%- include ('../../partials/header.ejs') %>
+
+<%- include ('../../partials/navbar.ejs') %>
+<body>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h1>Crie sua Conta</h1>
+            </div>
+            <div class="card-body">
+                <form action="/user/create" method="POST">
+                    <input class="form-control" type="email" name="email" id="" placeholder="eamil@email.com"><br />
+                    <input class="form-control" type="password" name="password" id="" placeholder="*********">
+                    <button class="btn btn-primary btn-block mt-3">Criar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</body>
+
+<%- include ('../../partials/footer.ejs')  %>
