@@ -5,9 +5,11 @@ const connection = require("./database/database");
 
 const categoriesController = require("./categoreis/categoriesController");
 const articlesController = require("./articles/articlesController");
+const usersController = require("./users/usersController");
 
 const Category = require("./categoreis/Category");
 const Article = require("./articles/Article");
+const User = require("./users/User");
 
 // Views Parser
 app.set("view engine", "ejs");
@@ -32,6 +34,8 @@ connection
 app.use("/", categoriesController);
 
 app.use("/", articlesController);
+
+app.use("/", usersController);
 
 app.get("/", (req, res) => {
   Article.findAll({
