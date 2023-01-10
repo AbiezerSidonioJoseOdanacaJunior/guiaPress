@@ -22,7 +22,7 @@ app.use(express.static("public"));
 app.use(
   session({
     secret: "abyouqlqrcoisa",
-    cookie: { maxAge: 30000 },
+    cookie: { maxAge: 3000000 },
   })
 );
 
