@@ -4,14 +4,16 @@ const User = require("./User");
 const bcrypt = require("bcryptjs");
 
 router.get("/admin/users", (req, res) => {
-  res.send("Listagem de Usuarios");
+  User.findAll().then((users) => {
+    res.render("admin/users/index", { users });
+  });
 });
 
 router.get("/admin/users/create", (req, res) => {
   res.render("admin/users/create");
 });
 
-router.post("/user/create", (req, res) => {
+router.post("/users/create", (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
 
@@ -23,10 +25,10 @@ router.post("/user/create", (req, res) => {
     password: hash,
   })
     .then(() => {
-      res.redirect("/");
+      res.redirect("/admin/users/index");
     })
-    .catch((error) => {
-      res.redirect("/");
+    .catch((err) => {
+      console.log(err);
     });
 });
 
