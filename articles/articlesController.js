@@ -71,7 +71,7 @@ router.get("/admin/articles/edit/:id", adminAuth, (req, res) => {
       }
     })
     .catch((err) => {
-      rconsole.log(err);
+      res.redirect("/");
     });
 });
 
